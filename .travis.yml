@@ -1,0 +1,21 @@
+## Travis CI configuration for the cookiecutter-python-app project template.
+##
+##   <https://travis-ci.org/mdklatt/cookiecutter-python-app>
+##
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+branches:
+  only:
+    - master 
+    - dev
+
+dist: xenial
+
+script:
+  - python tests/test_template.py

@@ -1,0 +1,4 @@
+## Runtime configuration for the {{ cookiecutter.app_name }} application.
+##
+core:
+  logging: WARN
