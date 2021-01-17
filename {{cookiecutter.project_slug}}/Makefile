@@ -24,7 +24,7 @@ help:
 #	find . -name '*~' -exec rm -f {} +
 
 lint:
-	flake8 Synctify test
+	flake8 {{ cookiecutter.app_name }} test
 
 test:
 	py.test
@@ -33,15 +33,15 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source Synctify setup.py test
+	coverage run --source {{ cookiecutter.app_name }} setup.py test
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
 
 docs:
-	rm -f docs/Synctify.rst
+	rm -f docs/{{ cookiecutter.app_name }}.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ Synctify
+	sphinx-apidoc -o docs/ {{ cookiecutter.app_name }}
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html
@@ -56,4 +56,4 @@ sdist: clean
 	ls -l dist
 
 run:
-	python src/{{cookiecutter.app_name}}/core/{{cookiecutter.app_name}}.py >Synctify.log 2>Synctify.err
+	python {{cookiecutter.app_name}}/local/python/{{cookiecutter.app_name}}.py >{{ cookiecutter.app_name }}.log 2>{{ cookiecutter.app_name }}.err
